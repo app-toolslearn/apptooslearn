@@ -1,0 +1,53 @@
+<ion-content class="background">
+    <ion-row>
+        <ion-col>
+            <img src="../../assets/icon/icon-tools.png" class="pic">
+        </ion-col>
+    </ion-row>
+    <ion-card>
+        <ion-card-content (keyup.enter)="ongotorelogin()">
+            <form [formGroup]="LoginForm">
+                <ion-list no-line>
+                    <ion-row>
+                        <ion-item>
+                            <ion-label>
+                                <ion-icon name="md-person"></ion-icon>
+                            </ion-label>
+
+                            <i class="icon ion-android-person placeholder-icon"></i>
+                            <ion-input type="text" required placeholder="example@email.com" [formControl]="LoginForm.controls['username']" [(ngModel)]="LoginForm.username" name="username">admin@emai.com</ion-input>
+                        </ion-item>
+
+                    </ion-row>
+
+                    <ion-item>
+
+                        <ion-label>
+                            <ion-icon name="md-lock"></ion-icon>
+                        </ion-label>
+                        <ion-input type="password" required placeholder="Password" [formControl]="LoginForm.controls['password']" [(ngModel)]="LoginForm.password" name="password">admin123456</ion-input>
+                    </ion-item>
+
+                    <ion-row class="text">
+                        <ion-col>
+                            <b (click)="gotoforgetpassword()"><u>Forget password?</u></b>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <button ion-button block color="default" [disabled]="!LoginForm.valid" (click)="ongotorelogin()">Sign in</button>
+                        </ion-col>
+                        <br>
+                    </ion-row>
+
+                    <p>OR</p>
+                    <a>Don't have an Account? <b (click)="ongotoregister()"><u>Sign up for Free</u></b></a>
+
+                </ion-list>
+            </form>
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

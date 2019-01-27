@@ -1,0 +1,117 @@
+<ion-content padding class="background">
+
+    <ion-row>
+        <ion-col col-1>
+            <img src="../../assets/icon/cancel.svg" (click)="CloseeditPage()" class="piccross">
+        </ion-col>
+    </ion-row>
+
+
+
+    <img src="../../assets/imgs/icon-user.png" class="picture">
+
+    <ion-card>
+        <ion-card-header class="header">Edit Profile</ion-card-header>
+        <ion-card-content>
+
+            <form [formGroup]="editpageForm">
+
+                <ion-row>
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon name="md-person"></ion-icon>
+                        </ion-label>
+
+
+                        <ion-input type="text" required placeholder="Name" [formControl]="editpageForm.controls['firstname']" [(ngModel)]="editpageForm.firstname" name="firstname"></ion-input>
+
+                    </ion-item>
+
+                    <p class="error" *ngIf="editpageForm.get('firstname').hasError('required') && editpageForm.get('firstname').touched">
+                        Please input your name
+                    </p>
+                    <p class="error" *ngIf="editpageForm.get('firstname').hasError('minlength') && editpageForm.get('firstname').touched">
+                        Minimum 4 characters
+                    </p>
+                    <p class="error" *ngIf="editpageForm.get('firstname').hasError('maxlength') && editpageForm.get('firstname').touched">
+                        Maximum 15 characters
+                    </p>
+                    <p class="error" *ngIf="editpageForm.get('firstname').hasError('pattern') && editpageForm.get('firstname').touched">
+                        Just use alphabet character
+                    </p>
+                </ion-row>
+
+
+                <ion-row>
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon name="md-mail"></ion-icon>
+                        </ion-label>
+                        <i class="icon ion-android-person placeholder-icon"></i>
+
+                        <ion-input type="text" required placeholder="Email Address" [formControl]="editpageForm.controls['email']" [(ngModel)]="editpageForm.email" name="email"></ion-input>
+
+                    </ion-item>
+                    <p class="error" *ngIf="editpageForm.get('email').hasError('required') && editpageForm.get('email').touched">
+                        Please input your email
+                    </p>
+                    <p class="error" *ngIf="editpageForm.get('email').hasError('pattern') && editpageForm.get('email').touched">
+                        Email address invalid
+                    </p>
+                </ion-row>
+
+
+                <ion-row>
+                    <ion-item>
+
+                        <ion-label>
+                            <ion-icon name="md-lock"></ion-icon>
+                        </ion-label>
+                        <ion-input type="password" required placeholder="Password" [formControl]="editpageForm.controls['password']" [(ngModel)]="editpageForm.password" name="password"></ion-input>
+                    </ion-item>
+                    <p class="error" *ngIf="editpageForm.get('password').hasError('required') && editpageForm.get('password').touched">
+                        Please input your password
+                    </p>
+                    <p class="error" *ngIf="editpageForm.get('password').hasError('minlength') && editpageForm.get('password').touched">
+                        Minimum 8 characters
+                    </p>
+                    <p class="error" *ngIf="editpageForm.get('password').hasError('maxlength') && editpageForm.get('password').touched">
+                        Maximum 15 characters
+                    </p>
+                </ion-row>
+
+
+                <ion-row>
+                    <ion-item>
+
+                        <ion-label>
+                            <ion-icon name="md-lock"></ion-icon>
+                        </ion-label>
+                        <ion-input type="password" required placeholder="ConfirmPassword" [formControl]="editpageForm.controls['repassword']" [(ngModel)]="editpageForm.repassword" name="repassword"></ion-input>
+                    </ion-item>
+                    <p class="error" *ngIf="editpageForm.get('repassword').hasError('required') && editpageForm.get('repassword').touched">
+                        Please input your password
+                    </p>
+                    <p class="error" *ngIf="editpageForm.get('repassword').hasError('minlength') && editpageForm.get('repassword').touched">
+                        Minimum 8 characters
+                    </p>
+                    <p class="error" *ngIf="editpageForm.get('repassword').hasError('maxlength') && editpageForm.get('repassword').touched">
+                        Maximum 15 characters
+                    </p>
+                </ion-row>
+
+            </form>
+
+            <ion-row>
+                <ion-col>
+                    <button ion-button block color="default" [disabled]="editpageForm.invalid" (click)="ongotoregister()">Save</button>
+                </ion-col>
+            </ion-row>
+
+        </ion-card-content>
+    </ion-card>
+
+
+
+
+</ion-content>

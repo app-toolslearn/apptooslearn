@@ -1,0 +1,18 @@
+page-first {
+    .background {
+        background-image: url('../../assets/imgs/Firstpage.jpg');
+        background-size: 100% 100%;
+        animation: colorchange 25s ease-out infinite;
+    }
+    .button {
+        margin-top: 140%;
+        margin-left: 15%;
+        height: 50px;
+        width: 75%;
+        border-radius: 15px;
+        line-height: 60px;
+        text-align: center;
+        border: 3px solid #F7F7F7;
+        background: #1294FF;
+    }
+}

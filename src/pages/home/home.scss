@@ -1,0 +1,26 @@
+page-home {
+    .fontkanit {
+        color: white;
+        text-align: center;
+    }
+    .background {
+        background-image: url('../../assets/imgs/bg.jpg');
+        background-size: 100% 100%;
+        animation: colorchange 25s ease-out infinite;
+    }
+    .cardsize {
+        margin-top: 50px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        border-radius: 10px;
+        background-color: #F7F7F7;
+    }
+    .textcontent {
+        text-align: justify;
+        text-indent: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-block-start: 10%;
+        margin-block-end: 10%;
+    }
+}

@@ -1,0 +1,59 @@
+page-login {
+    .pic {
+        width: 150px;
+        height: 150px;
+    }
+    .background {
+        background-image: url('../../assets/imgs/bg.jpg');
+        background-size: 100% 100%;
+        animation: colorchange 25s ease-out infinite;
+    }
+    .scroll-content {
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    ion-card.card {
+        box-shadow: none;
+        background-color: #E7E6E4;
+        border-radius: 5px;
+        filter: alpha(opacity=60);
+        opacity: 0.9;
+        height: 330px;
+    }
+    .text {
+        text-align: left;
+        font-size: 1.5rem;
+        color: #6D7172 !important;
+    }
+    a,
+    p,
+    ion-card-header.card-header {
+        ////สีของ SiGN IN
+        font-size: 1.5rem;
+        color: #6D7172!important;
+    }
+    .list>.item-block:first-child {
+        border: medium none;
+    }
+    .item {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background: rgb(255, 255, 255);
+        border: medium none;
+        .text-input,
+        {
+            color: rgb(0, 0, 0);
+        }
+    }
+    .bottom {
+        position: absolute;
+        bottom: 0;
+    }
+    .picuserpass {
+        width: 28px;
+        height: 28px;
+    }
+}

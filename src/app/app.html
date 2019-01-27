@@ -1,0 +1,34 @@
+<ion-menu [content]="content">
+    <ion-header class="backgroud">
+        <ion-row row-5>
+            <ion-col>
+                <img class="picture" src="../../assets/imgs/user.png">
+            </ion-col>
+            <ion-col>
+                <h6>Kanjana chaimongkhol</h6>
+
+            </ion-col>
+
+        </ion-row>
+
+        <br>
+
+
+    </ion-header>
+
+    <ion-content>
+        <ion-list class="listpages">
+            <button menuClose ion-item *ngFor="let p of pages" [class.activeHightlight]="checkActive(p)" (click)="openPage(p)">
+             {{p.title}}</button>
+        </ion-list>
+
+        <ion-item (click)="logoutClicked()">Logout</ion-item>
+    </ion-content>
+</ion-menu>
+<div *ngIf="showSplash" class="splash">
+    <div class="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+    </div>
+</div>
+<ion-nav color="dark" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,35 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                  </button>
+        <ion-title>อื่นๆ</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-row row-3>
+        <ion-col>
+            <img class="picture" src="../../assets/imgs/user photo.png">
+        </ion-col>
+        <ion-col>
+            <h6>Kanjana chaimongkhol</h6>
+            <h6>student @ kingMongkut's University of Technology North Bangkok</h6>
+        </ion-col>
+
+    </ion-row>
+    <ion-list class="listpages">
+        <ion-item *ngFor="let p of pages" (click)="openPage(p)">
+            {{p.title}}</ion-item>
+
+    </ion-list>
+
+    <ion-item (click)="logoutClicked()">Logout</ion-item>
+
+
+
+</ion-content>
+<ion-nav [root]="rootPage"></ion-nav>

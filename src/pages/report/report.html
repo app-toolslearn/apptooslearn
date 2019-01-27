@@ -1,0 +1,60 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+
+        <button ion-button menuToggle>
+                          
+                        <ion-icon name="menu"></ion-icon>
+                         
+                        </button>
+
+
+
+        <a><b  class="lesson">รายงานผล</b></a>
+
+
+
+    </ion-navbar>
+
+</ion-header>
+<ion-content class="background">
+    <ion-card class="card">
+        <div class="texthead">C Programming</div>
+        <hr>
+        <ion-grid>
+        <ion-row>
+            <ion-col>    
+                <div id="specificChart" class="donut-size">
+                    <div class="pie-wrapper">
+                        <div class="pie" #pie>
+                                
+                            <div class="left-side half-circle" #leftside></div>
+                            <div class="right-side half-circle" #rightside></div>
+                        </div>
+                            <div class="shadow" #shadow></div>
+                    </div>
+                    <div class="percent">100%</div>
+                </div>
+            </ion-col>
+            <ion-col>
+                    <div *ngFor="let d of data">
+            
+           
+                            <ion-row>
+                                <img src="assets/icon/{{d.image}}" class="img">
+                                <ion-col>
+                                    <div class="text">
+                                        {{d.title}}
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+            
+                       
+                        </div>
+            </ion-col>    
+        </ion-row>     
+       </ion-grid>
+       <hr>
+    </ion-card>
+
+</ion-content>

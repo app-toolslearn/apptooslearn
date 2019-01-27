@@ -1,0 +1,65 @@
+page-edit-profile {
+    .error {
+        margin-left: 10px;
+        color: red;
+        font-weight: bold;
+        text-align: left;
+    }
+    .piccross {
+        margin-top: 20px;
+        color: black;
+        width: 15px;
+        height: 15px;
+    }
+    .header {
+        font-size: 2.5rem;
+    }
+    .text {
+        text-align: left;
+        font-size: 1.5rem;
+        color: #6D7172 !important;
+    }
+    .background {
+        background-image: url('../../assets/imgs/bg.jpg');
+        background-size: 100% 100%;
+        animation: colorchange 25s ease-out infinite;
+    }
+    .picture {
+        margin-top: -10px;
+        width: 150px;
+        height: 150px;
+    }
+    .scroll-content {
+        align-content: center;
+        flex-direction: column;
+        // ]justify-content: center;
+        text-align: center;
+    }
+    .list>.item-block:first-child {
+        border: medium none;
+    }
+    .item {
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 3px;
+        background: rgb(255, 255, 255);
+        border: medium none;
+        .text-input,
+        {
+            color: rgb(0, 0, 0);
+        }
+    }
+    ion-card.card {
+        margin-top: 15px;
+        box-shadow: none;
+        background-color: #E7E6E4;
+        border-radius: 5px;
+        filter: alpha(opacity=60);
+        opacity: 0.9;
+        height: 350px;
+    }
+    .button {
+        position: absolute;
+        margin-left: -4px;
+    }
+}
