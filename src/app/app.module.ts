@@ -9,7 +9,6 @@ import { MyApp } from './app.component';
 import { FirstPage } from '../pages/first/first';
 import { HomePage } from '../pages/home/home';
 import { RegisterPage } from '../pages/register/register';
-import { PretestPage } from "../pages/pretest/pretest";
 import { LoginPage } from "../pages/login/login";
 import { TabsPage } from "../pages/tabs/tabs";
 import { MorePage } from "../pages/more/more";
@@ -45,7 +44,6 @@ import { TestHardComponent } from "../components/test-hard/test-hard";
     FirstPage,
     HomePage,
     RegisterPage,
-    PretestPage,
     LoginPage,
     TabsPage,
     MorePage,
@@ -90,7 +88,6 @@ import { TestHardComponent } from "../components/test-hard/test-hard";
     FirstPage,
     HomePage,
     RegisterPage,
-    PretestPage,
     LoginPage,
     TabsPage,
     MorePage,

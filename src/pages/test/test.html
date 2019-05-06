@@ -6,13 +6,19 @@
                         <ion-icon name="menu"></ion-icon>
                          
                         </button>
-        <a><b  class="lesson">รายงานผล</b></a>
+        <a><b  class="lesson">ชุดข้อสอบ</b></a>
     </ion-navbar>
 
 </ion-header>
 
 
 <ion-content class="background">
+     <!-- <ion-item *ngFor="tests lesson of test">
+            {{test.testname}}
+            {{test.exercise}}
+            {{test.symbol}}
+        </ion-item> -->
+        
     <test-easy></test-easy>
     <test-moderate></test-moderate>
     <test-hard></test-hard>
