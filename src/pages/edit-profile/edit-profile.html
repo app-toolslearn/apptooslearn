@@ -23,21 +23,21 @@
                         </ion-label>
 
 
-                        <ion-input type="text" required placeholder="Name" [formControl]="editpageForm.controls['firstname']" [(ngModel)]="editpageForm.firstname" name="firstname"></ion-input>
+                        <ion-input type="text" required placeholder="ชื่อผู้ใช้งาน" [formControl]="editpageForm.controls['firstname']" [(ngModel)]="editpageForm.firstname" name="firstname"></ion-input>
 
                     </ion-item>
 
                     <p class="error" *ngIf="editpageForm.get('firstname').hasError('required') && editpageForm.get('firstname').touched">
-                        Please input your name
+                        ใส่ชื่อของคุณ
                     </p>
-                    <p class="error" *ngIf="editpageForm.get('firstname').hasError('minlength') && editpageForm.get('firstname').touched">
-                        Minimum 4 characters
+                    <p class="error" *ngIf="editpageForm.get('firstname').touched">
+                        ใส่ข้อมูล
                     </p>
                     <p class="error" *ngIf="editpageForm.get('firstname').hasError('maxlength') && editpageForm.get('firstname').touched">
-                        Maximum 15 characters
+                        มากกว่า 15 ตัวอักษร
                     </p>
                     <p class="error" *ngIf="editpageForm.get('firstname').hasError('pattern') && editpageForm.get('firstname').touched">
-                        Just use alphabet character
+                        ใช้ได้เเค่ตัวอักษร
                     </p>
                 </ion-row>
 
@@ -49,14 +49,14 @@
                         </ion-label>
                         <i class="icon ion-android-person placeholder-icon"></i>
 
-                        <ion-input type="text" required placeholder="Email Address" [formControl]="editpageForm.controls['email']" [(ngModel)]="editpageForm.email" name="email"></ion-input>
+                        <ion-input type="text" required placeholder="อีเมล์" [formControl]="editpageForm.controls['email']" [(ngModel)]="editpageForm.email" name="email"></ion-input>
 
                     </ion-item>
                     <p class="error" *ngIf="editpageForm.get('email').hasError('required') && editpageForm.get('email').touched">
-                        Please input your email
+                        ใส่อีเมล์
                     </p>
                     <p class="error" *ngIf="editpageForm.get('email').hasError('pattern') && editpageForm.get('email').touched">
-                        Email address invalid
+                        อีเมล์ไม่ถูกต้อง
                     </p>
                 </ion-row>
 
@@ -67,16 +67,16 @@
                         <ion-label>
                             <ion-icon name="md-lock"></ion-icon>
                         </ion-label>
-                        <ion-input type="password" required placeholder="Password" [formControl]="editpageForm.controls['password']" [(ngModel)]="editpageForm.password" name="password"></ion-input>
+                        <ion-input type="password" required placeholder="รหัสผ่าน" [formControl]="editpageForm.controls['password']" [(ngModel)]="editpageForm.password" name="password"></ion-input>
                     </ion-item>
                     <p class="error" *ngIf="editpageForm.get('password').hasError('required') && editpageForm.get('password').touched">
-                        Please input your password
+                        ใส่รหัสผ่านของคุณ
                     </p>
                     <p class="error" *ngIf="editpageForm.get('password').hasError('minlength') && editpageForm.get('password').touched">
-                        Minimum 8 characters
+                        น้อยกว่า 8 ตัว
                     </p>
                     <p class="error" *ngIf="editpageForm.get('password').hasError('maxlength') && editpageForm.get('password').touched">
-                        Maximum 15 characters
+                        มากกว่า 15 ตัว
                     </p>
                 </ion-row>
 
@@ -87,16 +87,16 @@
                         <ion-label>
                             <ion-icon name="md-lock"></ion-icon>
                         </ion-label>
-                        <ion-input type="password" required placeholder="ConfirmPassword" [formControl]="editpageForm.controls['repassword']" [(ngModel)]="editpageForm.repassword" name="repassword"></ion-input>
+                        <ion-input type="password" required placeholder="ยืนยันรหัสผ่าน" [formControl]="editpageForm.controls['repassword']" [(ngModel)]="editpageForm.repassword" name="repassword"></ion-input>
                     </ion-item>
                     <p class="error" *ngIf="editpageForm.get('repassword').hasError('required') && editpageForm.get('repassword').touched">
-                        Please input your password
+                        ใส่รหัสให้ถูกต้อง
                     </p>
                     <p class="error" *ngIf="editpageForm.get('repassword').hasError('minlength') && editpageForm.get('repassword').touched">
-                        Minimum 8 characters
+                        น้อยกว่า 8 ตัว
                     </p>
                     <p class="error" *ngIf="editpageForm.get('repassword').hasError('maxlength') && editpageForm.get('repassword').touched">
-                        Maximum 15 characters
+                        มากกว่า 8 ตัว
                     </p>
                 </ion-row>
 
@@ -104,7 +104,7 @@
 
             <ion-row>
                 <ion-col>
-                    <button ion-button block color="default" [disabled]="editpageForm.invalid" (click)="ongotoregister()">Save</button>
+                    <button ion-button block color="default" [disabled]="editpageForm.invalid" (click)="ongotoregister()">บันทึก</button>
                 </ion-col>
             </ion-row>
 
