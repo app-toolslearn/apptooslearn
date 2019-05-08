@@ -9,7 +9,7 @@
     <img src="../../assets/imgs/user.png" class="picture">
 
     <ion-card>
-        <ion-card-header class="header">Register</ion-card-header>
+        <ion-card-header class="header">สมัครสมาชิก</ion-card-header>
         <ion-card-content>
             <form [formGroup]="registerForm">
 
@@ -18,10 +18,10 @@
                         <ion-label>
                             <ion-icon name="md-person"></ion-icon>
                         </ion-label>
-                        <ion-input type="text" required placeholder="Name" [formControl]="registerForm.controls['firstname']" [(ngModel)]="registerForm.firstname" name="firstname"></ion-input>
+                        <ion-input type="text" required placeholder="ชื่อ" [formControl]="registerForm.controls['firstname']" [(ngModel)]="registerForm.firstname" name="firstname"></ion-input>
                     </ion-item>
                     <p class="error" *ngIf="registerForm.get('firstname').hasError('required') && registerForm.get('firstname').touched">
-                        Please input your name
+                        โปรดกรอกชื่อของคุณ
                     </p>
                     <p class="error" *ngIf="registerForm.get('firstname').hasError('minlength') && registerForm.get('firstname').touched">
                         Minimum 4 characters
@@ -40,13 +40,13 @@
                             <ion-icon name="md-mail"></ion-icon>
                         </ion-label>
                         <i class="icon ion-android-person placeholder-icon"></i>
-                        <ion-input type="text" required placeholder="Email Address" [formControl]="registerForm.controls['email']" [(ngModel)]="registerForm.email" name="email"></ion-input>
+                        <ion-input type="text" required placeholder="ที่อยู่อีเมล" [formControl]="registerForm.controls['email']" [(ngModel)]="registerForm.email" name="email"></ion-input>
                     </ion-item>
                     <p class="error" *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched">
-                        Please input your email
+                        โปรดกรอกที่อยู่อีเมล
                     </p>
                     <p class="error" *ngIf="registerForm.get('email').hasError('pattern') && registerForm.get('email').touched">
-                        Email address invalid
+                        ที่อยู่อีเมลไม่ถูกต้อง
                     </p>
 
                 </ion-row>
@@ -56,16 +56,16 @@
                         <ion-label>
                             <ion-icon name="md-lock"></ion-icon>
                         </ion-label>
-                        <ion-input type="password" required placeholder="Password" [formControl]="registerForm.controls['password']" [(ngModel)]="registerForm.password" name="password"></ion-input>
+                        <ion-input type="password" required placeholder="รหัสผ่าน" [formControl]="registerForm.controls['password']" [(ngModel)]="registerForm.password" name="password"></ion-input>
                     </ion-item>
                     <p class="error" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">
-                        Please input your password
+                        โปรดกรอกรหัสผ่าน
                     </p>
                     <p class="error" *ngIf="registerForm.get('password').hasError('minlength') && registerForm.get('password').touched">
-                        Minimum 8 characters
+                        โปรดกรอกรหัสผ่านอย่างต่ำ 8 หลัก
                     </p>
                     <p class="error" *ngIf="registerForm.get('password').hasError('maxlength') && registerForm.get('password').touched">
-                        Maximum 15 characters
+                        สามารถกรอกรหัสผ่านได้มากสุด 15 หลัก
                     </p>
                 </ion-row>
 
@@ -74,21 +74,21 @@
                         <ion-label>
                             <ion-icon name="md-lock"></ion-icon>
                         </ion-label>
-                        <ion-input type="password" required placeholder="ConfirmPassword" [formControl]="registerForm.controls['repassword']" [(ngModel)]="registerForm.repassword" name="repassword"></ion-input>
+                        <ion-input type="password" required placeholder="ยืนยันรหัสผ่าน" [formControl]="registerForm.controls['repassword']" [(ngModel)]="registerForm.repassword" name="repassword"></ion-input>
                     </ion-item>
                     <p class="error" *ngIf="registerForm.get('repassword').hasError('required') && registerForm.get('repassword').touched">
-                        Please input your password
+                        โปรดกรอกรหัสผ่าน
                     </p>
                     <p class="error" *ngIf="registerForm.get('repassword').hasError('minlength') && registerForm.get('repassword').touched">
-                        Minimum 8 characters
+                        โปรดกรอกรหัสผ่านอย่างต่ำ 8 หลัก
                     </p>
                     <p class="error" *ngIf="registerForm.get('repassword').hasError('maxlength') && registerForm.get('repassword').touched">
-                        Maximum 15 characters
+                        สามารถกรอกรหัสผ่านได้มากสุด 15 หลัก
                     </p>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <button ion-button block color="default" [disabled]="registerForm.invalid" (click)="ongotoregister()">Register</button>
+                        <button ion-button block color="default" [disabled]="registerForm.invalid" (click)="ongotoregister()">ตกลง</button>
                     </ion-col>
                 </ion-row>
 

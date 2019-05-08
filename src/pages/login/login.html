@@ -16,7 +16,7 @@
                             </ion-label>
 
                             <i class="icon ion-android-person placeholder-icon"></i>
-                            <ion-input type="text" required placeholder="example@email.com" [formControl]="LoginForm.controls['username']" [(ngModel)]="LoginForm.username" name="username">admin@emai.com</ion-input>
+                            <ion-input type="text" required placeholder="อีเมล" [formControl]="LoginForm.controls['username']" [(ngModel)]="LoginForm.username" name="username">admin@emai.com</ion-input>
                         </ion-item>
 
                     </ion-row>
@@ -26,24 +26,24 @@
                         <ion-label>
                             <ion-icon name="md-lock"></ion-icon>
                         </ion-label>
-                        <ion-input type="password" required placeholder="Password" [formControl]="LoginForm.controls['password']" [(ngModel)]="LoginForm.password" name="password">admin123456</ion-input>
+                        <ion-input type="password" required placeholder="รหัสผ่าน" [formControl]="LoginForm.controls['password']" [(ngModel)]="LoginForm.password" name="password">admin123456</ion-input>
                     </ion-item>
 
                     <ion-row class="text">
                         <ion-col>
-                            <b (click)="gotoforgetpassword()"><u>Forget password?</u></b>
+                            <b (click)="gotoforgetpassword()"><u>ลืมรหัสผ่าน?</u></b>
                         </ion-col>
                     </ion-row>
 
                     <ion-row>
                         <ion-col>
-                            <button ion-button block color="default" [disabled]="!LoginForm.valid" (click)="ongotorelogin()">Sign in</button>
+                            <button ion-button block color="default" [disabled]="!LoginForm.valid" (click)="ongotorelogin()">เข้าสู่ระบบ</button>
                         </ion-col>
                         <br>
                     </ion-row>
 
                     <p>OR</p>
-                    <a>Don't have an Account? <b (click)="ongotoregister()"><u>Sign up for Free</u></b></a>
+                    <b (click)="ongotoregister()"><u>สมัครสมาชิกได้ที่นี่</u></b>
 
                 </ion-list>
             </form>
