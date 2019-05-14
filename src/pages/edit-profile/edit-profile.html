@@ -28,16 +28,14 @@
                     </ion-item>
 
                     <p class="error" *ngIf="editpageForm.get('firstname').hasError('required') && editpageForm.get('firstname').touched">
-                        ใส่ชื่อของคุณ
+                        โปรดกรอกชื่อของคุณ
                     </p>
-                    <p class="error" *ngIf="editpageForm.get('firstname').touched">
-                        ใส่ข้อมูล
-                    </p>
+
                     <p class="error" *ngIf="editpageForm.get('firstname').hasError('maxlength') && editpageForm.get('firstname').touched">
-                        มากกว่า 15 ตัวอักษร
+                        สามารถกรอกรหัสผ่านได้มากสุด 15 หลัก
                     </p>
                     <p class="error" *ngIf="editpageForm.get('firstname').hasError('pattern') && editpageForm.get('firstname').touched">
-                        ใช้ได้เเค่ตัวอักษร
+                        กรอกได้เฉพาะตัวอักษรเท่านั้น
                     </p>
                 </ion-row>
 
@@ -53,10 +51,10 @@
 
                     </ion-item>
                     <p class="error" *ngIf="editpageForm.get('email').hasError('required') && editpageForm.get('email').touched">
-                        ใส่อีเมล์
+                        โปรดกรอกอีเมลของคุณ
                     </p>
                     <p class="error" *ngIf="editpageForm.get('email').hasError('pattern') && editpageForm.get('email').touched">
-                        อีเมล์ไม่ถูกต้อง
+                        อีเมลของคุณไม่ถูกต้อง
                     </p>
                 </ion-row>
 
@@ -70,13 +68,13 @@
                         <ion-input type="password" required placeholder="รหัสผ่าน" [formControl]="editpageForm.controls['password']" [(ngModel)]="editpageForm.password" name="password"></ion-input>
                     </ion-item>
                     <p class="error" *ngIf="editpageForm.get('password').hasError('required') && editpageForm.get('password').touched">
-                        ใส่รหัสผ่านของคุณ
+                        โปรดกรอกรหัสผ่านของคุณ
                     </p>
                     <p class="error" *ngIf="editpageForm.get('password').hasError('minlength') && editpageForm.get('password').touched">
-                        น้อยกว่า 8 ตัว
+                        โปรดกรอกรหัสผ่านอย่างต่ำ 8 หลัก
                     </p>
                     <p class="error" *ngIf="editpageForm.get('password').hasError('maxlength') && editpageForm.get('password').touched">
-                        มากกว่า 15 ตัว
+                        สามารถกรอกรหัสผ่านมากสุด 15 หลัก
                     </p>
                 </ion-row>
 
@@ -90,13 +88,13 @@
                         <ion-input type="password" required placeholder="ยืนยันรหัสผ่าน" [formControl]="editpageForm.controls['repassword']" [(ngModel)]="editpageForm.repassword" name="repassword"></ion-input>
                     </ion-item>
                     <p class="error" *ngIf="editpageForm.get('repassword').hasError('required') && editpageForm.get('repassword').touched">
-                        ใส่รหัสให้ถูกต้อง
+                        โปรดกรอกรหัสผ่านของคุณ
                     </p>
                     <p class="error" *ngIf="editpageForm.get('repassword').hasError('minlength') && editpageForm.get('repassword').touched">
-                        น้อยกว่า 8 ตัว
+                        โปรดกรอกรหัสผ่านอย่างต่ำ 8 หลัก
                     </p>
                     <p class="error" *ngIf="editpageForm.get('repassword').hasError('maxlength') && editpageForm.get('repassword').touched">
-                        มากกว่า 8 ตัว
+                        สามารถกรอกรหัสผ่านมากสุด 15 หลัก
                     </p>
                 </ion-row>
 
