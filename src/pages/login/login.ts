@@ -5,6 +5,7 @@ import { TabsPage } from "../tabs/tabs";
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ForgetPasswordPage } from '../forget-password/forget-password';
 import { Storage } from "@ionic/storage";
+import { Longin } from "../../service/login";
 
 
 @Component({
@@ -22,9 +23,9 @@ export class LoginPage {
   username: any;
   password: any;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-  passwordPattern = "^[a-z0-9A-Z_-]{8,15}$";
+  passwordPattern = "^[a-z0-9A-Z_-]{6,15}$";
   constructor(public navCtrl: NavController, myform: FormBuilder, public navParams: NavParams, 
-    private alertCtrl: AlertController,private storage:Storage) {
+    private alertCtrl: AlertController,private storage:Storage,private loginService :Longin) {
     this.LoginForm = FormGroup
     this.LoginForm = myform.group({
       'username': [null, Validators.compose([Validators.required, Validators.pattern(this.emailPattern)])],
@@ -45,20 +46,15 @@ export class LoginPage {
   }
   ongotorelogin() {
 
-    this.user = "admin@email.com";
-    this.pass = "admin123456";
 
-
-    if (this.LoginForm.username == this.user && this.LoginForm.password == this.pass) {
+    this.loginService.loginService(this.LoginForm.username,this.LoginForm.password).subscribe(data =>{
+      console.log(data)
+    if (data.length != 0) {      
+      this.storage.set('user',data)
+      this.navCtrl.push(TabsPage);
       let status = {
         status:0
       } 
-      let data =[this.LoginForm.username,this.LoginForm.password,status]
-      
-    this.storage.set('user',data)
-    this.storage.set('status',0)
-
-      this.navCtrl.push(TabsPage);
     } else {
       let alert = this.alertCtrl.create({
         title: 'Username and Password',
@@ -67,6 +63,7 @@ export class LoginPage {
       });
       alert.present();
     }
+  })
 
   }
 

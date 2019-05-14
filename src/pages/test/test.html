@@ -13,27 +13,85 @@
 
 
 <ion-content class="background">
-     <!-- <ion-item *ngFor="tests lesson of test">
-            {{test.testname}}
-            {{test.exercise}}
-            {{test.symbol}}
-        </ion-item> -->
     <ion-grid>
         <ion-row >
-            <ion-col col-6>
-                 <test-easy></test-easy>
+            <ion-col col-6 *ngFor="let lessontest of tests" >
+                    <div *ngIf="lessontest.test_type == 'e'">
+                            <ion-card class="cardsize">
+                                <ion-grid>
+                                    <ion-row>
+                                        <!-- <ion-col col-2>
+                                          <img src="../../assets/imgs/icon-c.png" style="width:60%">
+                                      </ion-col> -->
+                                        <ion-col col-12>
+                                            <ion-row>
+                                                <div class="text">
+                                                    ชุดข้อสอบที่ {{number1}} ('ง่าย')
+                                                </div>
+                                            </ion-row>
+                                            <ion-row>
+                                                <ion-col col-12>
+                                                    <button ion-button round small>แบบฝึกหัด</button>
+                                                </ion-col>
+                                            </ion-row>
+                                        </ion-col>
+                        
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-card>
+                        </div>
+
+                        <div *ngIf="lessontest.test_type == 'm'">
+                                <ion-card class="cardsize">
+                                    <ion-grid>
+                                        <ion-row>
+                                            <!-- <ion-col col-2>
+                                              <img src="../../assets/imgs/icon-c.png" style="width:60%">
+                                          </ion-col> -->
+                                            <ion-col col-12>
+                                                <ion-row>
+                                                    <div class="text">
+                                                        ชุดข้อสอบที่ {{number2}} ('ปานกลาง')
+                                                    </div>
+                                                </ion-row>
+                                                <ion-row>
+                                                    <ion-col col-12>
+                                                        <button ion-button round small>แบบฝึกหัด</button>
+                                                    </ion-col>
+                                                </ion-row>
+                                            </ion-col>
+                            
+                                        </ion-row>
+                                    </ion-grid>
+                                </ion-card>
+                            </div>
+
+                            <div *ngIf="lessontest.test_type == 'h'">
+                                    <ion-card class="cardsize">
+                                        <ion-grid>
+                                            <ion-row>
+                                                <!-- <ion-col col-2>
+                                                  <img src="../../assets/imgs/icon-c.png" style="width:60%">
+                                              </ion-col> -->
+                                                <ion-col col-12>
+                                                    <ion-row>
+                                                        <div class="text">
+                                                            ชุดข้อสอบที่ {{number3}} ('ยาก')
+                                                        </div>
+                                                    </ion-row>
+                                                    <ion-row>
+                                                        <ion-col col-12>
+                                                            <button ion-button round small>แบบฝึกหัด</button>
+                                                        </ion-col>
+                                                    </ion-row>
+                                                </ion-col>
+                                
+                                            </ion-row>
+                                        </ion-grid>
+                                    </ion-card>
+                                </div>
             </ion-col>
-            <ion-col col-6>
-                <test-moderate></test-moderate>
-           </ion-col>
         </ion-row>
-        <ion-row>
-            <ion-col col-6>
-                <test-hard></test-hard>
-            </ion-col>
-        </ion-row>
+
     </ion-grid>
-    <!-- <test-easy></test-easy>
-    <test-moderate></test-moderate>
-    <test-hard></test-hard> -->
 </ion-content>

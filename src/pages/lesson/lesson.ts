@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import 'rxjs/add/operator/map'
+import { LessonService } from "../../service/lessonService";
+import { TestPage } from "../test/test";
+
 
 
 @Component({
@@ -8,30 +12,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LessonPage {
 
-  lessons : Array <any> = [];
+  lessons : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.lessons = [ 
-      {
-        "les" : "บทที่ 1 การพัฒนาโปรแกรม",
-        "exercise" : "test1" ,
-        "score" : "10"
-      },
-      {
-        "les" : "บทที่ 2 Basic C Programming",
-        "exercise" : "test2" ,
-        "score" : "10"
-      },
-      {
-        "les" : "บทที่ 3 Operator & Expression",
-        "exercise" : "test3" ,
-        "score" : "10"
-      }
-  ]
+  constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,private lessonData:LessonService) {
+    this.lessonData.lessonService(1).subscribe(data =>{
+      this.lessons = data;
+      console.log(data);
+      
+    })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LessonPage');
+  test(lessonID){    
+    this.navCtrl.push(TestPage,{
+      dataID: lessonID.les_id
+    });
+
   }
+  reset(lessonID){    
+    let alert = this.alertCtrl.create({
+      title: 'บทนำ ',
+      subTitle: 'ยินดีตอนรับเข้าสู่ Application Toolslearning เป็นแอปพลิเคชันสำหรับการเรียนรู้เหมาะสำหรับนักศึกษาตั่งแต่ชั้นปีที่ 1 หรือสำหรับคนทั่วไปที่สนใจในการเขียนโปรแกรมเพื่อแก้โจทย์ปัญหาต่างๆและเป็นหลักสูตรที่ทำให้ผู้ใช้เขียนโปรแกรมภาษา C เบื้องต้นได้อย่างรวดเร็ว',
+      buttons: ['ตกลง']
+    });
+
+  }
+  goToLearn(lessonID){    
+    this.navCtrl.push(TestPage,{
+      dataID: lessonID.les_id
+    });
+
+  }
+ 
 
 }

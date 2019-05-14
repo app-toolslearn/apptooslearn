@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from "@ionic/storage";
+import {HttpModule} from '@angular/http'
+
 
 import { MyApp } from './app.component';
 import { FirstPage } from '../pages/first/first';
@@ -35,8 +37,10 @@ import { TestEasyComponent } from "../components/test-easy/test-easy";
 import { TestModerateComponent } from "../components/test-moderate/test-moderate";
 import { TestHardComponent } from "../components/test-hard/test-hard";
 
-
-
+//service
+import { LessonService } from "../service/lessonService";
+import { Longin } from "../service/login";
+import { TestService } from "../service/testService";
 @NgModule({
   declarations: [
     //page
@@ -79,7 +83,8 @@ import { TestHardComponent } from "../components/test-hard/test-hard";
     IonicModule.forRoot(MyApp, {
       // tabsPlacement: 'top',
     }),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    HttpModule
 
   ],
   bootstrap: [IonicApp],
@@ -104,6 +109,10 @@ import { TestHardComponent } from "../components/test-hard/test-hard";
     SplashScreen,
 
     { provide: ErrorHandler, useClass: IonicErrorHandler, },
+    LessonService,
+    Longin,
+    TestService
+    
 
   ]
 })

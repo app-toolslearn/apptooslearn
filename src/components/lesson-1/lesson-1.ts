@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Generated class for the Lesson_1Component component.
@@ -12,11 +12,11 @@ import { Component } from '@angular/core';
 })
 export class Lesson_1Component {
 
-  text: string;
-
+  @Input("lessondata") dataLesson:any
+  lesson :any
   constructor() {
-    console.log('Hello Lesson_1Component Component');
-    this.text = 'Hello World';
+    console.log(this.dataLesson)
+    this.lesson = this.dataLesson;
   }
 
 }
