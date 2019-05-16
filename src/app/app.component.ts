@@ -17,6 +17,7 @@ import { ForgetPasswordPage } from "../pages/forget-password/forget-password";
 import { MessagePage } from "../pages/message/message";
 import { EditProfilePage } from "../pages/edit-profile/edit-profile";
 import { RegisterPage } from "../pages/register/register";
+import { MorePage } from "../pages/more/more";
 
 @Component({
   templateUrl: "app.html"
