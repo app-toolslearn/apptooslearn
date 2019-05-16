@@ -35,7 +35,7 @@ export class DotestPage implements OnInit {
     this.slider.lockSwipeToNext(true)
     this.storage.get('user').then(val =>{
       console.log(this.navParams.get('dataID'));
-      this.testService.testService(this.navParams.get('dataID'),val[0].user_id,null,null).subscribe(data =>{  
+      this.testService.testService(this.navParams.get('dataID'),val[0].user_id).subscribe(data =>{  
         console.log(data);
 
           this.choiceRadio =[]          
