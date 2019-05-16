@@ -15,33 +15,11 @@ export class TestPage {
   number3:any 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private testService:TestService) {
-    this.testService.testService(this.navParams.get('dataID')).subscribe(data =>{
-      this.tests = data
 
-  this.tests.forEach(element => {
-  if (element.test_type == 'e') {
-    this.number1 = 1
-  }
-  if (element.test_type == 'm' ) {
-    if (this.number1 > 0) {
-      this.number2 = this.number1 + 1     
-     }else{
-      this.number2 = 1
-    }
-  }else if(element.test_type == 'h'){
-    if (this.number2 > 0) {
-      this.number3 =  this.number2 + 1
-    }else if(this.number1 >0 && this.number2 == null){
-      this.number3 =  this.number1 + 1    
-    }else{
-      this.number3 = 1
-    }
 
-  }
-});
   
       
-    })      
+    
   }
 
   ionViewDidLoad() {

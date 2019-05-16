@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import {  NavController, NavParams,AlertController } from 'ionic-angular';
 import 'rxjs/add/operator/map'
 import { LessonService } from "../../service/lessonService";
-import { TestPage } from "../test/test";
-
+import { DotestPage } from "../dotest/dotest";
 
 
 @Component({
@@ -23,7 +22,7 @@ export class LessonPage {
   }
 
   test(lessonID){    
-    this.navCtrl.push(TestPage,{
+    this.navCtrl.push(DotestPage,{
       dataID: lessonID.les_id
     });
 
@@ -36,12 +35,12 @@ export class LessonPage {
     });
 
   }
-  goToLearn(lessonID){    
-    this.navCtrl.push(TestPage,{
-      dataID: lessonID.les_id
-    });
+  // goToLearn(lessonID){    
+  //   this.navCtrl.push(TestPage,{
+  //     dataID: lessonID.les_id
+  //   });
 
-  }
+  // }
  
 
 }

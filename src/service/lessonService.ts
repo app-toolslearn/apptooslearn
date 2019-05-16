@@ -8,7 +8,7 @@ export class LessonService {
 
     constructor(private http : Http)
     {
-        this.baseUrl = "http://172.20.10.2:3000/lesson/lessonByCourseID" 
+        this.baseUrl = "http://192.168.1.13:3000/lesson/lessonByCourseID" 
         
     }
 

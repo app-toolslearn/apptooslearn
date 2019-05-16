@@ -8,14 +8,15 @@ export class TestService {
 
     constructor(private http : Http)
     {
-        this.baseUrl = "http://172.20.10.2:3000/test/testByLessonId" 
+        this.baseUrl = "http://192.168.1.13:3000/test/index" 
         
     }
 
-    testService(lessonid){
+    testService(lessonid,user_id){
         
   return this.http.post(`${this.baseUrl}`,{
-    "lessonID":lessonid,
+    "user_id":user_id,
+    "lesson_id": lessonid,
   }).map(this.extractResponse) 
     }
     private extractResponse(res : Response){

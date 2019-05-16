@@ -20,6 +20,7 @@ import { LessonPage } from "../pages/lesson/lesson";
 import { ForgetPasswordPage } from "../pages/forget-password/forget-password";
 import { EditProfilePage } from "../pages/edit-profile/edit-profile";
 import { MessagePage } from "../pages/message/message";
+import { DotestPage } from "../pages/dotest/dotest";
 
 //component
 import { ProgressBarComponent} from "../components/progress-bar/progress-bar"; 
@@ -57,6 +58,7 @@ import { TestService } from "../service/testService";
     ForgetPasswordPage,
     EditProfilePage,
     MessagePage,
+    DotestPage,
 
 
 
@@ -102,6 +104,7 @@ import { TestService } from "../service/testService";
     ForgetPasswordPage,
     EditProfilePage,
     MessagePage,
+    DotestPage,
 
   ],
   providers: [

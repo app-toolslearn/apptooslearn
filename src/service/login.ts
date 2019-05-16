@@ -8,7 +8,7 @@ export class Longin {
 
     constructor(private http : Http)
     {
-        this.baseUrl = "http://172.20.10.2:3000/longin/checklogin" 
+        this.baseUrl = "http://192.168.1.13:3000/longin/checklogin" 
         
     }
 

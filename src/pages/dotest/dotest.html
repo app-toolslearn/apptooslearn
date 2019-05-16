@@ -1,0 +1,36 @@
+<!--
+  Generated template for the DotestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <a><b  class="lesson">แบบฝึกหัด</b></a>
+
+</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-slides #mySlider>
+    <ion-slide *ngFor="let itemTemp of temp;let i = index">
+            <ion-card class="testcard">     
+        <div>{{currentQuiz.number}}. {{question}}</div>
+               
+            <ion-list [(ngModel)]="ansRadio" radio-group *ngIf="choiceType == 1 ;">
+                    <ion-item *ngFor="let item of choice; let i = index">
+                            <ion-label class="texttest" text-wrap [innerHTML] ="choiceRadio[i]"></ion-label>
+                            <ion-radio value={{item.test_c_id}}></ion-radio>
+                        </ion-item>
+            </ion-list>
+            <div *ngIf="choiceType == 2;">
+                <ion-input [(ngModel)]="ansTextarea"></ion-input>
+            </div>
+           
+                    </ion-card>
+              </ion-slide>
+            </ion-slides>
+</ion-content>
