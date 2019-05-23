@@ -30,6 +30,8 @@ export class LoginPage {
     private storage: Storage,
     private loginService: Longin
   ) {
+
+    // สร้าง FromGroup สำหรับ validate ข้อมูล
     this.LoginForm = FormGroup;
     this.LoginForm = myform.group({
       username: [
@@ -49,19 +51,34 @@ export class LoginPage {
     });
   }
 
+  // กดปุ่ม ลืมรหัส
   gotoforgetpassword() {
+    // ไปหน้า ForgetPasswordPage
     this.navCtrl.push(ForgetPasswordPage);
   }
+
+  // 
   ongotoregister() {
+    // ไปหน้า RegisterPage
     this.navCtrl.push(RegisterPage);
   }
+
+  // กดปุ่ม Login
   ongotorelogin() {
+
+    // เรียก Service loginService ส่ง parameter 2 ตัว ที่พิมมาจาก html this.LoginForm.username กับ this.LoginForm.password
     this.loginService
       .loginService(this.LoginForm.username, this.LoginForm.password)
       .subscribe(data => {
-        console.log("XX"+data);
+
+        // subscribe รับข้อมูล data หลังจาก service loginService ทำงานเสร็จแล้ว
+
         if (data.length != 0) {
+
+          // บันทึกข้อมูลที่ได้ลง storage(Lib ของ Angular สำหรับบันทึกข้อมูลลงหน่วยความจำ)
           this.storage.set("user", data);
+
+          // ไปหน้า TabsPage
           this.navCtrl.push(TabsPage);
           let status = {
             status: 0

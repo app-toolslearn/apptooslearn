@@ -14,6 +14,9 @@ export class Longin {
   loginService(username, password) {
     console.log(username);
     console.log(password);
+
+    // เรียก nodeJs service (API url : AppSettings.SERVICE_URL+"longin/checklogin")
+    // .map ใช้สำหรับแปลงค่าที่ได้ให้เป็น json ที่ function extractResponse()
     return this.http
       .post(`${this.baseUrl}`, {
         username: username,
@@ -22,6 +25,8 @@ export class Longin {
       .map(this.extractResponse);
   }
   private extractResponse(res: Response) {
+
+    // แปลง ผลลัพเป็น json
     return res.json();
   }
 }
