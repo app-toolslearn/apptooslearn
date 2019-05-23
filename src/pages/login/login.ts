@@ -59,7 +59,7 @@ export class LoginPage {
     this.loginService
       .loginService(this.LoginForm.username, this.LoginForm.password)
       .subscribe(data => {
-        console.log(data);
+        console.log("XX"+data);
         if (data.length != 0) {
           this.storage.set("user", data);
           this.navCtrl.push(TabsPage);

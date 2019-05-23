@@ -14,7 +14,6 @@ export class Longin {
   loginService(username, password) {
     console.log(username);
     console.log(password);
-
     return this.http
       .post(`${this.baseUrl}`, {
         username: username,
