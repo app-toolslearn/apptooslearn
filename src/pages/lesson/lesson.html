@@ -3,10 +3,10 @@
     <ion-navbar color="primary">
 
         <button ion-button menuToggle>
-                                <ion-icon name="menu"></ion-icon>
-                              </button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
 
-        <a><b  class="lesson">บทเรียน</b></a>
+        <a><b class="lesson">บทเรียน</b></a>
 
     </ion-navbar>
 
@@ -15,48 +15,48 @@
 <ion-content class="background">
 
 
-        <div *ngFor="let lesson of lessons">
-            
-                        <ion-card class="cardsize">
-                    
-                            <ion-grid>
-                                <ion-row>
-                    
-                                    <ion-col col-12>
-                                        <ion-row>
-                                            <ion-col col-8>
-                                                <div class="text">
-                                                    {{lesson.les_name}}
-                                                </div>
-                                            </ion-col>
-                                            <ion-col col-4>
-                                                <button ion-button round small color="secondary">{{lesson.les_no}}</button>
-                                            </ion-col>
-                                        </ion-row>
-                                        <ion-row>
-                                            <ion-col col-4>
-                                                <button ion-button round small color="primary">{{lesson.exercise}}</button>
-                                            </ion-col>
-                                            <ion-col col-4>
-                                                <button ion-button round small color="primary" (click)="test(lesson)">แบบฝึกหัด</button>
-                                            </ion-col>
-                                            <ion-col col-4>
-                                                <button ion-button round small color="danger">รีเซ็ท</button>
-                                            </ion-col>
-                                        </ion-row>
-                    
-                                    </ion-col>
-                    
-                                </ion-row>
-                            </ion-grid>
-                    
-                    
-                        </ion-card>
-                    
-                    
-                                    </div>
-        
-    
+    <div *ngFor="let lesson of lessons">
+
+        <ion-card class="cardsize">
+
+            <ion-grid>
+                <ion-row>
+
+                    <ion-col col-12>
+                        <ion-row>
+                            <ion-col col-8>
+                                <div class="text">
+                                    {{lesson.les_name}}
+                                </div>
+                            </ion-col>
+                            <ion-col col-4>
+                                <button ion-button round small color="secondary">{{lesson.les_no}}</button>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-4>
+                                <button ion-button round small color="primary" (click)="onClickContent(lesson.les_id)">เนื้อหา</button>
+                            </ion-col>
+                            <ion-col col-4>
+                                <button ion-button round small color="primary" (click)="test(lesson)">แบบฝึกหัด</button>
+                            </ion-col>
+                            <ion-col col-4>
+                                <button ion-button round small color="danger">รีเซ็ท</button>
+                            </ion-col>
+                        </ion-row>
+
+                    </ion-col>
+
+                </ion-row>
+            </ion-grid>
+
+
+        </ion-card>
+
+
+    </div>
+
+
 
 
 </ion-content>

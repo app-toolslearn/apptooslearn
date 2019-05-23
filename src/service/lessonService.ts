@@ -1,25 +1,32 @@
-import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import { Injectable } from "@angular/core";
+import { Http, Response } from "@angular/http";
+import {AppSettings} from "../service/app-settings";
 
-
-@Injectable() 
+@Injectable()
 export class LessonService {
-    private baseUrl:any;
+  private baseUrl: any;
+  private baseUrlLessonContent: any;
+  constructor(private http: Http) {
+    this.baseUrl = AppSettings.SERVICE_URL+"lesson/lessonByCourseID";
+    this.baseUrlLessonContent = AppSettings.SERVICE_URL+"lesson/lessonContentByLesId";
+  }
+  lessonService(courseID) {
+    return this.http
+      .post(`${this.baseUrl}`, {
+        course_id: courseID
+      })
+      .map(this.extractResponse);
+  }
 
-    constructor(private http : Http)
-    {
-        this.baseUrl = "http://192.168.1.13:3000/lesson/lessonByCourseID" 
-        
-    }
+  getLessonContent(lessonId) {
+    return this.http
+      .post(`${this.baseUrlLessonContent}`, {
+        lesson_id: lessonId
+      })
+      .map(this.extractResponse);
+  }
 
-    lessonService(courseID){
-        
-  return this.http.post(`${this.baseUrl}`,{
-    "course_id":courseID
-  }).map(this.extractResponse) 
-    }
-    private extractResponse(res : Response){
-        return res.json();
-    }
-
+  private extractResponse(res: Response) {
+    return res.json();
+  }
 }

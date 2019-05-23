@@ -20,7 +20,9 @@ import { LessonPage } from "../pages/lesson/lesson";
 import { ForgetPasswordPage } from "../pages/forget-password/forget-password";
 import { EditProfilePage } from "../pages/edit-profile/edit-profile";
 import { MessagePage } from "../pages/message/message";
-import { DotestPage } from "../pages/dotest/dotest";
+import { ExercisePage } from "../pages/exercise/exercise";
+import { TestChoicePage } from "../pages/test-choice/test-choice";
+import { LessonContentPage } from "../pages/lesson-content/lesson-content";
 
 //component
 import { ProgressBarComponent} from "../components/progress-bar/progress-bar"; 
@@ -42,6 +44,9 @@ import { TestHardComponent } from "../components/test-hard/test-hard";
 import { LessonService } from "../service/lessonService";
 import { Longin } from "../service/login";
 import { TestService } from "../service/testService";
+import { RegisterService } from "../service/registerService";
+import { MsgService } from "../service/messageService";
+
 @NgModule({
   declarations: [
     //page
@@ -58,9 +63,9 @@ import { TestService } from "../service/testService";
     ForgetPasswordPage,
     EditProfilePage,
     MessagePage,
-    DotestPage,
-
-
+    ExercisePage,
+    TestChoicePage,
+    LessonContentPage,
 
     //Component
     ProgressBarComponent,
@@ -104,7 +109,9 @@ import { TestService } from "../service/testService";
     ForgetPasswordPage,
     EditProfilePage,
     MessagePage,
-    DotestPage,
+    ExercisePage,
+    TestChoicePage,
+    LessonContentPage
 
   ],
   providers: [
@@ -114,7 +121,9 @@ import { TestService } from "../service/testService";
     { provide: ErrorHandler, useClass: IonicErrorHandler, },
     LessonService,
     Longin,
-    TestService
+    TestService,
+    RegisterService,
+    MsgService
     
 
   ]

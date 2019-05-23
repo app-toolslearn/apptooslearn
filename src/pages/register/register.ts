@@ -3,6 +3,8 @@ import { NavController, NavParams, AlertController } from "ionic-angular";
 import { LoginPage } from "../login/login";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 
+import { RegisterService } from "../../service/registerService";
+
 @Component({
   selector: "page-register",
   templateUrl: "register.html"
@@ -26,7 +28,8 @@ export class RegisterPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     myform: FormBuilder,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private registerService: RegisterService
   ) {
     this.registerForm = FormGroup;
     this.registerForm = myform.group({
@@ -77,26 +80,9 @@ export class RegisterPage {
       console.log(this.registerForm.email);
       console.log(this.registerForm.password);
       console.log(this.registerForm.repassword);
-      let alert = this.alertCtrl.create({
-        title: "สำเร็จ",
-        subTitle: "",
-        buttons: [
-          {
-            text: "Cancel",
-            handler: data => {
-              console.log("Cancel clicked");
-            }
-          },
-          {
-            text: "OK",
-            handler: data => {
-              console.log("Saved clicked");
-              this.navCtrl.push(LoginPage);
-            }
-          }
-        ]
-      });
-      alert.present();
+
+      this.checkRegister();
+
     } else {
       let alert = this.alertCtrl.create({
         title: " รหัสผ่าน ไม่ตรงกัน",
@@ -121,5 +107,43 @@ export class RegisterPage {
   }
   Closeregister() {
     this.navCtrl.push(LoginPage);
+  }
+
+  checkRegister() {
+    this.registerService
+      .registerService(this.registerForm.firstname, this.registerForm.email,this.registerForm.password)
+      .subscribe(data => {
+        console.log(data);
+        if (data == "success") {
+          let alert = this.alertCtrl.create({
+            title: "สำเร็จ",
+            subTitle: "",
+            buttons: [
+              {
+                text: "Cancel",
+                handler: data => {
+                  console.log("Cancel clicked");
+                }
+              },
+              {
+                text: "OK",
+                handler: data => {
+                  console.log("Saved clicked");
+                  this.navCtrl.push(LoginPage);
+                }
+              }
+            ]
+          });
+          alert.present();
+          
+        } else {
+          let alert = this.alertCtrl.create({
+            title: data,
+            subTitle: "ไม่ถูกต้อง",
+            buttons: ["ตกลง"]
+          });
+          alert.present();
+        }
+      });
   }
 }

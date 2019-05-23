@@ -1,0 +1,60 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <a><b class="lesson">ทำข้อสอบ</b></a>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="background">
+
+
+  <div *ngFor="let testChoice of testChoices">
+
+    <ion-card class="cardsize" >
+
+      <ion-grid>
+        <ion-row>
+
+          <ion-col col-12>
+            <ion-row>
+              <ion-col col-12>
+                <img [src]="testChoice.test_c_img_url"  />
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-6 style="text-align: center;">
+                <button ion-button round small color="primary">{{testChoice.test_c_A}}</button>
+              </ion-col>
+              <ion-col col-6 style="text-align: center;">
+                <button ion-button round small color="primary">{{testChoice.test_c_B}}</button>
+              </ion-col>
+              <ion-col col-6 style="text-align: center;">
+                <button ion-button round small color="primary">{{testChoice.test_c_C}}</button>
+              </ion-col>
+              <ion-col col-6 style="text-align: center;">
+                <button ion-button round small color="primary">{{testChoice.test_c_D}}</button>
+              </ion-col>
+            </ion-row>
+
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+
+    </ion-card>
+
+
+  </div>
+
+
+
+
+</ion-content>

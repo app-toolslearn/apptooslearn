@@ -48,13 +48,14 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      var that = this;
       statusBar.styleDefault();
       splashScreen.hide();
       this.storage.get("user").then(data => {
         if (data != null) {
-          this.rootPage = LessonPage;
+          that.rootPage = LessonPage;
         } else {
-          this.rootPage = LoginPage;
+          that.rootPage = LoginPage;
         }
       });
       timer(1000).subscribe(() => (this.showSplash = false));
