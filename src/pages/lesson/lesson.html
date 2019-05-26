@@ -24,14 +24,12 @@
 
                     <ion-col col-12>
                         <ion-row>
-                            <ion-col col-8>
+                            <ion-col col-12>
                                 <div class="text">
                                     {{lesson.les_name}}
                                 </div>
                             </ion-col>
-                            <ion-col col-4>
-                                <button ion-button round small color="secondary">{{lesson.les_no}}</button>
-                            </ion-col>
+                            
                         </ion-row>
                         <ion-row>
                             <ion-col col-4>
@@ -41,7 +39,8 @@
                                 <button ion-button round small color="primary" (click)="test(lesson)">แบบฝึกหัด</button>
                             </ion-col>
                             <ion-col col-4>
-                                <button ion-button round small color="danger">รีเซ็ท</button>
+                                <button *ngIf="lesson.point" ion-button round small color="secondary">{{lesson.point}} คะแนน</button>
+                                <button *ngIf="!lesson.point" ion-button round small color="danger">ยังไม่ได้ทำแบบฝึกหัด</button>
                             </ion-col>
                         </ion-row>
 

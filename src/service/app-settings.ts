@@ -1,4 +1,6 @@
 export const AppSettings = {
-    "SERVICE_URL": "https://ssitconsultant.com/",
+    "SERVICE_URL": "http://localhost:8080/",
     
  };
+
+ //https://ssitconsultant.com/

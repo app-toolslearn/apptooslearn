@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { TestService } from "../../service/testService";
+
+
+import { Storage } from "@ionic/storage";
 
 /**
  * Generated class for the ExercisePage page.
@@ -17,22 +20,121 @@ import { TestService } from "../../service/testService";
 })
 export class ExercisePage {
 
-  exercises :any
-  number1:any
-  number2:any 
-  number3:any 
+  exercises: any
+  number1: any
+  number2: any
+  number3: any
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private testService:TestService) {
-    this.testService.exerciseByLessonId(this.navParams.get('dataID')).subscribe(data =>{
+  ansList = new Map();
+  sumCorect = 0;
+
+  les_id: any;
+
+  submited = false;
+
+  userData: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private testService: TestService,
+    private alertCtrl: AlertController, private storage: Storage) {
+    this.les_id = this.navParams.get('dataID');
+    this.storage.get("user").then(data => {
+      if (data != null) {
+        this.userData = data;
+      }
+      //this.userData = storage.get("user");
+
+      //console.log(this.userData[0].user_email)
+    }
+    )
+    this.testService.exerciseByLessonId(this.les_id).subscribe(data => {
       this.exercises = data
 
-      console.log("EX" + this.exercises)
-      
-    })      
+      console.log(this.exercises)
+
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TestPage');
+  }
+
+  choseAns(ans, choosed) {
+    //e.target.setAttribute('color' ,'secondary');
+    //e.currentTarget.setAttribute('color','secondary')
+    //this.ansList = 
+    this.ansList.set(choosed.test_c_id, ans);
+    this.resetBtnColor(choosed.test_c_id);
+
+    for (let exercise of this.exercises) {
+      var ans = this.ansList.get(exercise.test_c_id);
+      if (choosed.test_c_id == exercise.test_c_id) {
+        if (ans == 1) {
+          exercise.btnA_Color = "secondary";
+        } else if (ans == 2) {
+          exercise.btnB_Color = "secondary";
+        } else if (ans == 3) {
+          exercise.btnC_Color = "secondary";
+        } else if (ans == 4) {
+          exercise.btnD_Color = "secondary";
+        }
+
+      }
+
+    }
+
+
+  }
+
+  resetBtnColor(id) {
+    for (let exercise of this.exercises) {
+      //var ans = this.ansList.get(exercise.test_c_id);
+      if (id == exercise.test_c_id) {
+        exercise.btnA_Color = "primary";
+        exercise.btnB_Color = "primary";
+        exercise.btnC_Color = "primary";
+        exercise.btnD_Color = "primary";
+      }
+
+
+
+    }
+  }
+
+  onClickSubmit() {
+    console.log(this.ansList);
+    this.sumCorect = 0;
+    for (let exercise of this.exercises) {
+      var ans = this.ansList.get(exercise.test_c_id);
+      if (ans == exercise.test_c_ans) {
+        this.sumCorect++;
+      }
+
+    }
+    console.log("Sum : " + this.sumCorect);
+
+    this.testService.saveLog(this.userData[0].user_id,this.les_id, this.sumCorect).subscribe(data => {
+      console.log(data);
+      if (data) {
+        let alert = this.alertCtrl.create({
+          title: "ส่งคำตอบเรียบร้อย",
+          subTitle: "สามารถเช็คคะแนนได้ที่ด้านล่าง",
+          buttons: ["ตกลง"]
+        });
+        this.submited = true;
+        alert.present();
+
+      } else {
+        let alert = this.alertCtrl.create({
+          title: "ไม่สำเร็จ",
+          subTitle: "เกิดข้อผิดพลาด",
+          buttons: ["ตกลง"]
+        });
+        alert.present();
+      }
+    });
+
+    //this.navCtrl.push(TabsPage);
+    //this.ansList = new Map();
   }
 
 }

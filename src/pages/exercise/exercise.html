@@ -17,7 +17,7 @@
 
   <div *ngFor="let exercise of exercises">
 
-    <ion-card class="cardsize" >
+    <ion-card class="cardsize">
 
       <ion-grid>
         <ion-row>
@@ -25,40 +25,66 @@
           <ion-col col-12>
             <ion-row>
               <ion-col col-12>
-                <img [src]="exercise.test_c_img_url"  />
+                <img [src]="exercise.test_c_img_url" />
               </ion-col>
             </ion-row>
-            <ion-row>
-              <ion-col col-6 style="text-align: center;">
-                <button ion-button round small color="primary">{{exercise.test_c_A}}</button>
+            <ion-row *ngIf="exercise.test_type == 1">
+              <ion-col col-6 >
+                <button ion-button round small [color]="exercise.btnA_Color" class="btn"
+                  (click)="choseAns('1', exercise)">{{exercise.test_c_A}}</button>
               </ion-col>
-              <ion-col col-6 style="text-align: center;">
-                <button ion-button round small color="primary">{{exercise.test_c_B}}</button>
+              <ion-col col-6 >
+                <button ion-button round small [color]="exercise.btnB_Color" class="btn"
+                  (click)="choseAns('2', exercise)">{{exercise.test_c_B}}</button>
               </ion-col>
-              <ion-col col-6 style="text-align: center;">
-                <button ion-button round small color="primary">{{exercise.test_c_C}}</button>
+              <ion-col col-6 >
+                <button ion-button round small [color]="exercise.btnC_Color" class="btn"
+                  (click)="choseAns('3', exercise)">{{exercise.test_c_C}}</button>
               </ion-col>
-              <ion-col col-6 style="text-align: center;">
-                <button ion-button round small color="primary">{{exercise.test_c_D}}</button>
+              <ion-col col-6 >
+                <button ion-button round small [color]="exercise.btnD_Color" class="btn"
+                  (click)="choseAns('4', exercise)">{{exercise.test_c_D}}</button>
               </ion-col>
             </ion-row>
 
+            <ion-row *ngIf="exercise.test_type == 2 || exercise.test_type == 3">
+              <ion-col col-12>
+                ใส่คำตอบ : 
+                <ion-textarea style="background-color: aliceblue;"></ion-textarea>
+              </ion-col>
+            </ion-row>
+
+            <ion-row *ngIf="exercise.test_type == 2 || exercise.test_type == 3">
+                <ion-col col-12>
+                    <img [src]="exercise.test_c_ans_img_url" />
+                </ion-col>
+              </ion-row>
+
             <ion-row>
-              
             </ion-row>
           </ion-col>
 
         </ion-row>
       </ion-grid>
-
-
-      <iframe #iframe width="100%" height="500px" class="iframe" scrolling="yes" src="https://www.jdoodle.com/c-online-compiler"></iframe>
-
-
     </ion-card>
 
 
+
   </div>
+  <br>
+  <button ion-button round block color="secondary" (click)="onClickSubmit()">ส่งคำตอบ</button>
+  <br>
+  <br>
+  <div *ngIf="submited">
+    <p>คะแนนที่ได้ :</p>
+    <h1>{{sumCorect}}</h1>
+  </div>
+  <br>
+  <iframe #iframe width="100%" height="500px" class="iframe" scrolling="yes"
+    src="https://www.jdoodle.com/c-online-compiler"></iframe>
+
+
+
 
 
 
