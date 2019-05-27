@@ -39,8 +39,8 @@
                                 <button ion-button round small color="primary" (click)="test(lesson)">แบบฝึกหัด</button>
                             </ion-col>
                             <ion-col col-4>
-                                <button *ngIf="lesson.point" ion-button round small color="secondary">{{lesson.point}} คะแนน</button>
-                                <button *ngIf="!lesson.point" ion-button round small color="danger">ยังไม่ได้ทำแบบฝึกหัด</button>
+                                <button class="btn" *ngIf="lesson.point" ion-button round small color="secondary"><span class="choice">{{lesson.point}} คะแนน</span></button>
+                                <button class="btn" *ngIf="!lesson.point" ion-button round small color="danger"><span class="choice">ยังไม่ได้ทำแบบฝึกหัด</span></button>
                             </ion-col>
                         </ion-row>
 

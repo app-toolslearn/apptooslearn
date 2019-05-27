@@ -29,36 +29,36 @@
               </ion-col>
             </ion-row>
             <ion-row *ngIf="exercise.test_type == 1">
-              <ion-col col-6 >
+              <ion-col col-6>
                 <button ion-button round small [color]="exercise.btnA_Color" class="btn"
-                  (click)="choseAns('1', exercise)">{{exercise.test_c_A}}</button>
+                  (click)="choseAns('1', exercise)"><span class="choice">{{exercise.test_c_A}}</span></button>
               </ion-col>
-              <ion-col col-6 >
+              <ion-col col-6>
                 <button ion-button round small [color]="exercise.btnB_Color" class="btn"
-                  (click)="choseAns('2', exercise)">{{exercise.test_c_B}}</button>
+                  (click)="choseAns('2', exercise)"><span class="choice">{{exercise.test_c_B}}</span></button>
               </ion-col>
-              <ion-col col-6 >
+              <ion-col col-6>
                 <button ion-button round small [color]="exercise.btnC_Color" class="btn"
-                  (click)="choseAns('3', exercise)">{{exercise.test_c_C}}</button>
+                  (click)="choseAns('3', exercise)"><span class="choice">{{exercise.test_c_C}}</span></button>
               </ion-col>
-              <ion-col col-6 >
+              <ion-col col-6>
                 <button ion-button round small [color]="exercise.btnD_Color" class="btn"
-                  (click)="choseAns('4', exercise)">{{exercise.test_c_D}}</button>
+                  (click)="choseAns('4', exercise)"><span class="choice">{{exercise.test_c_D}}</span></button>
               </ion-col>
             </ion-row>
 
             <ion-row *ngIf="exercise.test_type == 2 || exercise.test_type == 3">
               <ion-col col-12>
-                ใส่คำตอบ : 
+                ใส่คำตอบ :
                 <ion-textarea style="background-color: aliceblue;"></ion-textarea>
               </ion-col>
             </ion-row>
 
-            <ion-row *ngIf="exercise.test_type == 2 || exercise.test_type == 3">
-                <ion-col col-12>
-                    <img [src]="exercise.test_c_ans_img_url" />
-                </ion-col>
-              </ion-row>
+            <ion-row *ngIf="(exercise.test_type == 2 || exercise.test_type == 3) && submited">
+              <ion-col col-12>
+                <img [src]="exercise.test_c_ans_img_url" />
+              </ion-col>
+            </ion-row>
 
             <ion-row>
             </ion-row>
@@ -72,7 +72,7 @@
 
   </div>
   <br>
-  <button ion-button round block color="secondary" (click)="onClickSubmit()">ส่งคำตอบ</button>
+  <button ion-button round block color="secondary" (click)="onClickSubmit()" [disabled]="submited">ส่งคำตอบ</button>
   <br>
   <br>
   <div *ngIf="submited">

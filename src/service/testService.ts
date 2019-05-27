@@ -43,9 +43,9 @@ export class TestService {
     return res.json();
   }
 
-  saveLog(usrt_id,les_id, point) {
+  saveLog(usrt_id,les_id,test_id, point) {
 
     return this.http
-      .post(`${this.baseUrlSaveLog}`, { user_id: usrt_id, les_id, point });
+      .post(`${this.baseUrlSaveLog}`, { user_id: usrt_id, les_id: les_id, test_id : test_id, point : point });
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams, AlertController } from "ionic-angular";
+import { NavController, NavParams, AlertController, MenuController } from "ionic-angular";
 import { RegisterPage } from "../register/register";
 import { TabsPage } from "../tabs/tabs";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
@@ -28,9 +28,11 @@ export class LoginPage {
     public navParams: NavParams,
     private alertCtrl: AlertController,
     private storage: Storage,
-    private loginService: Longin
+    private loginService: Longin,
+    private menu: MenuController
   ) {
 
+    this.menu.swipeEnable(false);
     // สร้าง FromGroup สำหรับ validate ข้อมูล
     this.LoginForm = FormGroup;
     this.LoginForm = myform.group({

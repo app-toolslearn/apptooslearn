@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import 'rxjs/add/operator/map'
 import { LessonService } from "../../service/lessonService";
 import { ExercisePage } from "../exercise/exercise";
@@ -7,48 +7,68 @@ import { LessonContentPage } from "../lesson-content/lesson-content";
 
 
 
+import { Storage } from "@ionic/storage";
+
 @Component({
   selector: 'page-lesson',
   templateUrl: 'lesson.html',
 })
 export class LessonPage {
 
-  lessons : any;
+  lessons: any;
+  userData: any;
 
-  constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,private lessonData:LessonService) {
-    this.lessonData.lessonService(1).subscribe(data =>{
-      this.lessons = data;
-      console.log(data);
-      
-    })
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,
+    private lessonData: LessonService, private storage: Storage) {
+
+    
+
   }
 
-  test(lessonID){    
-    this.navCtrl.push(ExercisePage,{
+  ngOnInit() {
+    this.getData();
+  }
+
+  onPageWillEnter() {
+    // You can execute what you want here and it will be executed right before you enter the view
+    this.getData();
+  }
+
+  getData(){
+    this.storage.get("user").then(data => {
+      if (data != null) {
+        this.userData = data;
+        this.lessonData.lessonService(1, data[0].user_id).subscribe(data => {
+          this.lessons = data;
+          console.log(data);
+
+        });
+      }
+      //this.userData = storage.get("user");
+
+      //console.log(this.userData[0].user_email)
+    });
+  }
+
+  test(lessonID) {
+    this.navCtrl.push(ExercisePage, {
       dataID: lessonID.les_id
     });
 
   }
-  reset(lessonID){    
-    let alert = this.alertCtrl.create({
-      title: 'บทนำ ',
-      subTitle: 'ยินดีตอนรับเข้าสู่ Application Toolslearning เป็นแอปพลิเคชันสำหรับการเรียนรู้เหมาะสำหรับนักศึกษาตั่งแต่ชั้นปีที่ 1 หรือสำหรับคนทั่วไปที่สนใจในการเขียนโปรแกรมเพื่อแก้โจทย์ปัญหาต่างๆและเป็นหลักสูตรที่ทำให้ผู้ใช้เขียนโปรแกรมภาษา C เบื้องต้นได้อย่างรวดเร็ว',
-      buttons: ['ตกลง']
-    });
 
-  }
-  goToLearn(lessonID){    
-    this.navCtrl.push(ExercisePage,{
+  goToLearn(lessonID) {
+    this.navCtrl.push(ExercisePage, {
       dataID: lessonID.les_id
     });
 
   }
 
-  onClickContent(lessonId){
-    this.navCtrl.push(LessonContentPage,{
+  onClickContent(lessonId) {
+    this.navCtrl.push(LessonContentPage, {
       lessonId: lessonId
     });
   }
- 
+
 
 }

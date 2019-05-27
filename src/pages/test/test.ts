@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { TestService } from "../../service/testService";
 import { TestChoicePage } from "../test-choice/test-choice";
+import { ExercisePage } from "../exercise/exercise";
 
 
 
@@ -53,7 +54,7 @@ export class TestPage {
   }
 
   onClickTest(testId){
-    this.navCtrl.push(TestChoicePage,{
+    this.navCtrl.push(ExercisePage,{
       testId: testId
     });
   }

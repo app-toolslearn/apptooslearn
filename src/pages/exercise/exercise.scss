@@ -2,4 +2,14 @@ page-exercise {
     .btn:active{
         background:rgb(0, 253, 13);
     }
+
+    .btn {
+        white-space: normal;
+        height: auto;
+    }
+
+    .choice{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 }
