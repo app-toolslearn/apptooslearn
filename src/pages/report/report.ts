@@ -78,10 +78,11 @@ export class ReportPage {
     // Instantiate and draw our chart, passing in some options.
     var chart = new this.googleChartLibrary.visualization
       .PieChart(document.getElementById('pie-chart-div'));
-
-    chart.draw(data, {
-      'title': 'สรุปการเรียน'
-    });
+      var options = {
+        title: 'สรุปการเรียน',
+        colors: ['green', 'red']
+      }
+    chart.draw(data, options);
   }
 
 

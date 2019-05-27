@@ -57,7 +57,7 @@ export class ExercisePage {
         console.log(this.exercises)
 
       })
-    } else if(this.test_id) {
+    } else if (this.test_id) {
       this.les_id = 0;
       this.testService.testChoiceByTestId(this.test_id).subscribe(data => {
         this.exercises = data
@@ -128,9 +128,9 @@ export class ExercisePage {
       }
       //console.log("Sum : " + this.sumCorect);
 
-      
 
-      this.testService.saveLog(this.userData[0].user_id, this.les_id,this.test_id, this.sumCorect).subscribe(data => {
+
+      this.testService.saveLog(this.userData[0].user_id, this.les_id, this.test_id, this.sumCorect).subscribe(data => {
         console.log(data);
         if (data) {
           let alert = this.alertCtrl.create({
@@ -138,8 +138,10 @@ export class ExercisePage {
             subTitle: "สามารถเช็คคะแนนได้ที่ด้านล่าง",
             buttons: ["ตกลง"]
           });
+
+          //alert.present();
+          this.ansList = new Map();
           this.submited = true;
-          alert.present();
 
         } else {
           let alert = this.alertCtrl.create({
@@ -161,14 +163,18 @@ export class ExercisePage {
   }
 
   validate() {
+    var exerciseQuestion = 0;
+
     for (let exercise of this.exercises) {
-      var ans = this.ansList.get(exercise.test_c_id);
-      if (!ans) {
-        return false;
-      } else {
-        return true;
+      if (exercise.test_type == 1) {
+        exerciseQuestion++;
       }
 
+    }
+    if (exerciseQuestion == this.ansList.size) {
+      return true;
+    } else {
+      return false;
     }
   }
 

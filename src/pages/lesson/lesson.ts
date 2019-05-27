@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController,Refresher } from 'ionic-angular';
 import 'rxjs/add/operator/map'
 import { LessonService } from "../../service/lessonService";
 import { ExercisePage } from "../exercise/exercise";
@@ -14,6 +14,7 @@ import { Storage } from "@ionic/storage";
   templateUrl: 'lesson.html',
 })
 export class LessonPage {
+  @ViewChild("refresherRef") refresherRef: Refresher;
 
   lessons: any;
   userData: any;
@@ -27,7 +28,7 @@ export class LessonPage {
           var userId = data[0].user_id;
           this.lessonData.lessonService(1, userId).subscribe(data => {
             this.lessons = data;
-            console.log(data);
+            //console.log(data);
   
           });
         }
@@ -56,6 +57,30 @@ export class LessonPage {
     this.navCtrl.push(LessonContentPage, {
       lessonId: lessonId
     });
+  }
+
+  doRefresh(e){
+    this.storage.get("user").then(data => {
+      if (data != null) {
+        this.userData = data;
+        var userId = data[0].user_id;
+        this.lessonData.lessonService(1, userId).subscribe(data => {
+          this.lessons = data;
+          //console.log(data);
+
+        });
+      }
+
+      
+      //this.userData = storage.get("user");
+
+      //console.log(this.userData[0].user_email)
+    });
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      e.complete(); 
+    }, 1000);
   }
 
 

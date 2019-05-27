@@ -13,7 +13,9 @@
 </ion-header>
 
 <ion-content class="background">
-
+    <ion-refresher #refresherRef slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
     <div *ngFor="let lesson of lessons">
 
@@ -29,18 +31,21 @@
                                     {{lesson.les_name}}
                                 </div>
                             </ion-col>
-                            
+
                         </ion-row>
                         <ion-row>
-                            <ion-col col-4>
-                                <button ion-button round small color="primary" (click)="onClickContent(lesson.les_id)">เนื้อหา</button>
+                            <ion-col col-3>
+                                <button ion-button round small color="primary"
+                                    (click)="onClickContent(lesson.les_id)">เนื้อหา</button>
                             </ion-col>
                             <ion-col col-4>
                                 <button ion-button round small color="primary" (click)="test(lesson)">แบบฝึกหัด</button>
                             </ion-col>
-                            <ion-col col-4>
-                                <button class="btn" *ngIf="lesson.point" ion-button round small color="secondary"><span class="choice">{{lesson.point}} คะแนน</span></button>
-                                <button class="btn" *ngIf="!lesson.point" ion-button round small color="danger"><span class="choice">ยังไม่ได้ทำแบบฝึกหัด</span></button>
+                            <ion-col col-5>
+                                <button class="btn" *ngIf="lesson.point" ion-button round small color="secondary"><span
+                                        class="choice">{{lesson.point}} คะแนน</span></button>
+                                <button class="btn" *ngIf="!lesson.point" ion-button round small color="danger"><span
+                                        class="choice">คะแนน</span></button>
                             </ion-col>
                         </ion-row>
 

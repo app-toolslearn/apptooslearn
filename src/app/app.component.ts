@@ -57,7 +57,7 @@ export class MyApp {
         if (data != null) {
           this.userData = data[0];
           
-          that.rootPage = LessonPage;
+          that.rootPage = TabsPage;
         } else {
           that.rootPage = LoginPage;
         }
