@@ -29,6 +29,8 @@ export class MyApp {
   rootPage: any;
   showSplash = true; // <-- show animation
 
+  userData : any;
+
   //pageArray menu Toggle
   pages: Array<{ title: string; Component: any }>;
   activePage: any;
@@ -53,6 +55,8 @@ export class MyApp {
       splashScreen.hide();
       this.storage.get("user").then(data => {
         if (data != null) {
+          this.userData = data[0];
+          
           that.rootPage = LessonPage;
         } else {
           that.rootPage = LoginPage;

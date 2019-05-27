@@ -1,6 +1,6 @@
 <ion-menu [content]="content">
     <ion-header class="backgroud">
-        <h6 class="h">กัญจนา ไชยมงคล</h6>
+        <h6 *ngIf="userData" class="h">{{userData.user_name}}</h6>
         <br>
     </ion-header>
 
