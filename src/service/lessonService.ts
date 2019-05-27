@@ -10,7 +10,7 @@ export class LessonService {
     this.baseUrl = AppSettings.SERVICE_URL+"lesson/lessonByCourseID";
     this.baseUrlLessonContent = AppSettings.SERVICE_URL+"lesson/lessonContentByLesId";
   }
-  lessonService(courseID,userId) {
+  lessonService(courseID, userId) {
     return this.http
       .post(`${this.baseUrl}`, {
         course_id: courseID,

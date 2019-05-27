@@ -21,33 +21,21 @@ export class LessonPage {
   constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,
     private lessonData: LessonService, private storage: Storage) {
 
-    
+      this.storage.get("user").then(data => {
+        if (data != null) {
+          this.userData = data;
+          var userId = data[0].user_id;
+          this.lessonData.lessonService(1, userId).subscribe(data => {
+            this.lessons = data;
+            console.log(data);
+  
+          });
+        }
+        //this.userData = storage.get("user");
+  
+        //console.log(this.userData[0].user_email)
+      });
 
-  }
-
-  ngOnInit() {
-    this.getData();
-  }
-
-  onPageWillEnter() {
-    // You can execute what you want here and it will be executed right before you enter the view
-    this.getData();
-  }
-
-  getData(){
-    this.storage.get("user").then(data => {
-      if (data != null) {
-        this.userData = data;
-        this.lessonData.lessonService(1, data[0].user_id).subscribe(data => {
-          this.lessons = data;
-          console.log(data);
-
-        });
-      }
-      //this.userData = storage.get("user");
-
-      //console.log(this.userData[0].user_email)
-    });
   }
 
   test(lessonID) {
