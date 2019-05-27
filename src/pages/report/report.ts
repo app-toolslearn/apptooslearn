@@ -1,5 +1,8 @@
-import { Component ,ViewChild ,Renderer} from '@angular/core';
-import {NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, Renderer } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+
+import { LessonService } from "../../service/lessonService";
+import { Storage } from "@ionic/storage";
 
 
 @Component({
@@ -7,63 +10,79 @@ import {NavController, NavParams } from 'ionic-angular';
   templateUrl: 'report.html',
 })
 export class ReportPage {
-  @ViewChild("pie") pie :any
-  @ViewChild("leftside") leftside :any
-  @ViewChild("rightside") rightside :any
-  @ViewChild("shadow") shadow:any
-  data: Array<{title:any,image:any}>;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams,public renderer: Renderer) {
-    this.data = [
-      {
-        title : "ยังไม่เรียน",
-        image : "iconred.png"
-        
-      },
-      {
-        title : "กำลังเรียน",
-        image : "iconorange.png"
-      },
-      {
-        title : "เรียนแล้ว",
-        image : "icongreen.png"
+  @ViewChild("pie") pie: any
+  @ViewChild("leftside") leftside: any
+  @ViewChild("rightside") rightside: any
+  @ViewChild("shadow") shadow: any
+  data: Array<{ title: any, image: any }>;
+
+  googleChartLibrary;
+
+  lessons: any;
+
+  done: any;
+  all: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer,
+    private lessonData: LessonService, private storage: Storage) {
+    this.storage.get("user").then(data => {
+      if (data != null) {
+        //this.userData = data;
+        var userId = data[0].user_id;
+        this.lessonData.lessonService(1, userId).subscribe(data => {
+          this.lessons = data;
+          console.log(data);
+
+          var doneLesson = 0;
+          var allLesson = 0
+          for (let lesson of this.lessons) {
+            //var ans = this.ansList.get(exercise.test_c_id);
+            if (lesson.point) {
+              doneLesson++;
+            }
+            allLesson++;
+          }
+          this.done = doneLesson;
+          this.all = allLesson;
+
+        });
       }
-    ]
+    });
+
+
   }
 
-  ionViewDidLoad() {
-    this.updateDonutChart(50,true)
-    console.log('ionViewDidLoad ReportPage');
+  ngOnInit() {
+    this.useVanillaJSLibrary();
   }
 
-  updateDonutChart(percent, donut) {
-    percent = Math.round(percent);
-    if (percent > 100) {
-        percent = 100;
-    } else if (percent < 0) {
-        percent = 0;
-    }
-    var deg = Math.round(360 * (percent / 100));
+  useVanillaJSLibrary() {
+    this.googleChartLibrary = (<any>window).google;
+    // Load the Visualization API and the corechart package.
+    this.googleChartLibrary.charts.load('current', { 'packages': ['corechart'] });
 
+    // Set a callback to run when the Google Visualization API is loaded.
+    this.googleChartLibrary.charts.setOnLoadCallback(this.drawChart.bind(this));
+  }
 
-    if(percent > 50){
-      this.renderer.setElementStyle(this.pie.nativeElement,'clip', 'rect(auto, auto, auto, auto)');
-      this.renderer.setElementStyle(this.rightside.nativeElement,'transform', 'rotate(180deg)');
-    }else{
-      this.renderer.setElementStyle(this.pie.nativeElement,'clip', 'rect(0, 1em, 1em, 0.5em)');
-      this.renderer.setElementStyle(this.rightside.nativeElement,'transform', 'rotate(0deg)');
-    }
-    if (donut) {
-      this.renderer.setElementStyle(this.rightside.nativeElement,'border-width', '0.1em');
-      this.renderer.setElementStyle(this.leftside.nativeElement,'border-width', '0.1em');
-      this.renderer.setElementStyle(this.shadow.nativeElement,'border-width', '0.1em');
-    }else{
-      this.renderer.setElementStyle(this.rightside.nativeElement,'border-width', '0.5em');
-      this.renderer.setElementStyle(this.leftside.nativeElement,'border-width', '0.5em');
-      this.renderer.setElementStyle(this.shadow.nativeElement,'border-width', '0.5em');
-    }
-    this.renderer.setElementStyle(this.leftside.nativeElement,'transform', 'rotate(' + deg + 'deg)');
+  drawChart() {
+    // Create the data table.
+    var data = new this.googleChartLibrary.visualization.DataTable();
+    data.addColumn('string', 'Activity Name');
+    data.addColumn('number', 'Hours');
+    data.addRows([
+      ['เรียนแล้ว', this.done],
+      ['ยังไม่ได้เรียน', this.all - this.done]
+    ]);
 
-}
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new this.googleChartLibrary.visualization
+      .PieChart(document.getElementById('pie-chart-div'));
+
+    chart.draw(data, {
+      'title': 'สรุปการเรียน'
+    });
+  }
+
 
 }
