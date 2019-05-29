@@ -33,13 +33,14 @@ export class ExercisePage {
 
   submited = false;
 
-
+  exerciseName: any;
   userData: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private testService: TestService,
     private alertCtrl: AlertController, private storage: Storage) {
     this.les_id = this.navParams.get('dataID');
     this.test_id = this.navParams.get('testId');
+    this.exerciseName = this.navParams.get('exerciseName');
     this.storage.get("user").then(data => {
       if (data != null) {
         this.userData = data;

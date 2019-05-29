@@ -6,7 +6,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
 
-    <a><b class="lesson">แบบฝึกหัด</b></a>
+    <a><b class="lesson">{{exerciseName}}</b></a>
 
   </ion-navbar>
 
@@ -87,8 +87,7 @@
   <br>
   <br>
   <div *ngIf="submited">
-    <p>คะแนนที่ได้ :</p>
-    <h1>{{sumCorect}}</h1>
+    <p>คะแนนที่ได้ : {{sumCorect}}</p>
   </div>
   <br>
   <iframe #iframe width="100%" height="500px" class="iframe" scrolling="yes"

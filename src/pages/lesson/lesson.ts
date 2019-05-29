@@ -41,7 +41,8 @@ export class LessonPage {
 
   test(lessonID) {
     this.navCtrl.push(ExercisePage, {
-      dataID: lessonID.les_id
+      dataID: lessonID.les_id,
+      exerciseName: lessonID.les_name
     });
 
   }
@@ -53,9 +54,10 @@ export class LessonPage {
 
   }
 
-  onClickContent(lessonId) {
+  onClickContent(lessonId, lesson_name) {
     this.navCtrl.push(LessonContentPage, {
-      lessonId: lessonId
+      lessonId: lessonId,
+      lesson_name : lesson_name
     });
   }
 

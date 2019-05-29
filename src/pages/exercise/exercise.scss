@@ -5,12 +5,18 @@ page-exercise {
 
     .btn {
         white-space: normal;
-        height: auto;
+        //height: 100%;
     }
 
     .choice{
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: left;
+    }
+
+    .lesson {
+        margin-left: 10px;
+        font-size: 1.7rem;
+        color: white;
     }
 }

@@ -42,8 +42,7 @@ export class MyApp {
     private storage: Storage
   ) {
     this.pages = [
-      { title: "ส่งข้อความ", Component: MessagePage },
-      { title: "เเก้ไขโปรไฟล์", Component: EditProfilePage }
+      { title: "ส่งข้อความ", Component: MessagePage }
     ];
     this.activePage = this.pages[0];
 

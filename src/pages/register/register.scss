@@ -28,13 +28,6 @@ page-register {
         width: 150px;
         height: 150px;
     }
-    .scroll-content {
-        align-content: center;
-        display: flex;
-        flex-direction: column;
-        // justify-content: center;
-        text-align: center;
-    }
     .list>.item-block:first-child {
         border: medium none;
     }
@@ -44,10 +37,7 @@ page-register {
         margin-bottom: 3px;
         background: rgb(255, 255, 255);
         border: medium none;
-        .text-input,
-        {
-            color: rgb(0, 0, 0);
-        }
+        
     }
     ion-card.card {
         margin-top: 20px;
@@ -64,6 +54,16 @@ page-register {
         margin-left: -5px;
         // justify-content: center;
     }
-    // #ion-grid{
-    // }
+    
+    ion-col{
+        text-align: center;
+    }
+
+    ion-card-header{
+        text-align: center;
+    }
+
+    ion-card-content{
+        text-align: center;
+    }
 }

@@ -53,9 +53,10 @@ export class TestPage {
     console.log('ionViewDidLoad TestPage');
   }
 
-  onClickTest(testId){
+  onClickTest(testId, index){
     this.navCtrl.push(ExercisePage,{
-      testId: testId
+      testId: testId,
+      exerciseName : 'ชุดข้อสอบที่ ' + index,
     });
   }
 

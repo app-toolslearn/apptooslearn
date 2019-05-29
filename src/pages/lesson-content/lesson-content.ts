@@ -18,8 +18,10 @@ import { LessonService } from "../../service/lessonService";
 export class LessonContentPage {
 
   contents :any
+  lesson_name : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private lessonService:LessonService) {
+    this.lesson_name = this.navParams.get('lesson_name');
     this.lessonService.getLessonContent(this.navParams.get('lessonId')).subscribe(data =>{
       this.contents = data
 
