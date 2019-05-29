@@ -37,4 +37,8 @@ page-lesson {
         padding-top: 10px;
         padding-bottom: 10px;
     }
+
+    ion-content.has-refresher > .scroll-content {
+        background-color: transparent;
+    }
 }

@@ -80,7 +80,7 @@ export class ReportPage {
       .PieChart(document.getElementById('pie-chart-div'));
       var options = {
         title: 'สรุปการเรียน',
-        colors: ['green', 'red']
+        colors: ['#5cb85c', '#d9534f']
       }
     chart.draw(data, options);
   }
